@@ -1,0 +1,52 @@
+<Page loaded="loaded">
+<ActionBar class="actionbar" title="">
+<ActionBar.actionItems>                
+                <ActionItem tap="logout">
+                    <ActionItem.actionView>
+						<StackLayout>
+                       <Label class="icon" text="&#xf011;" id="font-awesome"/>
+						</StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem> 
+	            <ActionItem id="change" tap="goTo">
+                    <ActionItem.actionView>
+						<StackLayout>
+					   <Label class="icon" text="&#xf084;" id="font-awesome"/>
+						</StackLayout>
+                    </ActionItem.actionView>
+                </ActionItem>    
+	            <ActionItem tap="exportDB">
+                    <ActionItem.actionView>
+						<StackLayout>
+					   <Label class="icon" text="&#xf019;" id="font-awesome"/>
+						</StackLayout>	
+                    </ActionItem.actionView>
+                </ActionItem> 
+	            <ActionItem tap="importDB">
+                    <ActionItem.actionView>
+						<StackLayout>
+					   <Label class="icon" text="&#xf093;" id="font-awesome"/>
+						</StackLayout>	
+                    </ActionItem.actionView>
+                </ActionItem> 
+	            <ActionItem id="help" tap="goTo">
+                    <ActionItem.actionView>
+						<StackLayout>
+					   <Label text="&#xf059;" id="font-awesome"/>
+						</StackLayout>	
+                    </ActionItem.actionView>
+                </ActionItem> 
+            </ActionBar.actionItems>    
+</ActionBar>    
+<ScrollView  orientation="vertical">
+<GridLayout class="scroll" rows="auto, auto, auto" columns="*, *"> 
+<Image id="personalDoc" src="~/images/personaldocs.png" row="0" col="0" tap="goTo"></Image>    
+<Image id="note" src="~/images/note.png" row="0" col="1" tap="goTo"></Image>
+<Image id="password" src="~/images/password.png" row="1" col="0" tap="goTo"></Image>
+<Image id="webLogin" src="~/images/login.png" row="1" col="1" tap="goTo"></Image>
+<Image id="creditCard" src="~/images/credit-card.png" row="2" col="0" tap="goTo"></Image>
+<Image id="bank" src="~/images/bank.png" row="2" col="1" tap="goTo"></Image> 
+</GridLayout> 
+    </ScrollView>
+	 
+</Page>

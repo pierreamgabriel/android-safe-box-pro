@@ -1,0 +1,15 @@
+<Page  loaded="{{ selectWebsite }}" navigatingTo="onNavigatingTo" xmlns:actionBar="/actionBar">
+ <ActionBar class="actionbar" title="All logins">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"></NavigationButton>
+</ActionBar>
+   <StackLayout paddingBottom="80">
+     <Label text="&#xf055;" id="font-awesome" tap="add"/>   
+    <ListView row="0" items= "{{websiteResults}}" class="list-group" >
+        <ListView.itemTemplate>
+            <StackLayout>
+            <Label rowId="{{id}}" website="{{site}}" username="{{username}}" password="{{password}}" text="{{site}}" tap="receiveData" class="list-group-item"/>   
+       </StackLayout>
+        </ListView.itemTemplate>
+    </ListView>   
+    </StackLayout>
+</Page>

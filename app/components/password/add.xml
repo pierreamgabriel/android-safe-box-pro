@@ -1,0 +1,15 @@
+<Page navigatingTo="onNavigatingTo" xmlns:actionBar="/actionBar">
+    <ActionBar class="actionbar" title="Add a password">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"></NavigationButton>
+</ActionBar>
+<ScrollView  orientation="vertical">	
+<StackLayout class="login-wrapper" tap="dismissSoftInput">
+    <TextField class="add_edit" text="{{otherName}}" hint="Name" />
+    <TextField class="add_edit" text="{{otherPass}}" hint="Password" />
+    <TextField class="add_edit" text="{{otherInfo}}" hint="Other info" />
+    <Button class="btn btn-secondary-add btn-rounded-lg" text="Save" tap="{{other}}" />
+    <Label row="2" col="0" text="Go Back" class="go-back" textWrap="true" tap="goBack" /> 
+    </StackLayout>
+	</ScrollView>
+</Page>
+

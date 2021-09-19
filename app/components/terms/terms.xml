@@ -1,0 +1,32 @@
+<Page navigatingTo="onNavigatingTo" loaded="loaded">
+	<ActionBar class="actionbar" title="Android Safe Box Pro"></ActionBar>
+    <ScrollView  orientation="vertical">    
+<StackLayout class="login-wrapper stackLayout">
+<Label />    
+<Label class="label-policy" textWrap="true" text="Privacy Policy" />
+<Label class="label" textWrap="true" text="Android Safe Box Pro is a mobile application developed by Tech Stuff House that allows users to store any text data on the device where the application is installed, using a database encrypted with 256-bit AES encryption. The app has the following privacy policy:" />
+<Label class="label" textWrap="true" text="1. The data saved in the app isn't sent over the internet." />
+<Label class="label" textWrap="true" text="2. The data you choose to store in the encrypted database can only be accessed in the app by providing the password used to encrypt it." />
+<Label class="label" textWrap="true" text="3. As this app displays ads provided by Google Admob, Google may collect data to serve better targeted ads to the user. The types of data that Google may use include: " />
+<Label class="label" textWrap="true" text="* IP address, which may be used to estimate the general location of a device. " />
+<Label class="label" textWrap="true" text="* Non-user related crash logs." />
+<Label class="label" textWrap="true" text="* User-associated performance data such as app launch time, hang rate, or energy usage." />
+<Label class="label" textWrap="true" text="* A Device ID such as the device's advertising identifier or other app-bounded device identifiers, which may be used for the purpose of third-party advertising and analytics." />
+<Label class="label" textWrap="true" text="* Advertising data, such as advertisements the user has seen, may be used to power analytics and advertising features." />
+<Label class="label" textWrap="true" text="* Other user product interactions like app launch taps, and interaction information, like video views, may be used to improve advertising performance." />	
+<Label class="label-license" textWrap="true" text="Terms of Service" />      
+<Label class="label" textWrap="true" text="1. This app only stores your data on the device where it is installed. If you want to access your data on a different device, you must back up the database and manually transfer it to another Android device." />   
+<Label class="label" textWrap="true" text="2. The password used to encrypt the database cannot be recovered in any way. If you forget your password, you will not be able to access your data anymore." />  
+<Label class="label" textWrap="true" text="3. To change your password, you must provide your current password." /> 
+<Label class="label" textWrap="true" text="4. If you change your password after making a backup, you will need your previous password to access the data in the backup." /> 
+<Label class="label" textWrap="true" text="5. If you uninstall or delete this app, you can only recover your data if you backed up the database." /> 
+<Label class="label" textWrap="true" text="6. If you lose access to the device or the Android system where the app is installed, you can only recover your data if you backed up the database and transferred it to another location." />
+<Label class="label" textWrap="true" text="7. On Android 11 and above, the import feature works until the app is uninstalled or deleted. If you perform a backup and then uninstall the app, the backup file can't be imported automatically. In that case, you can use a device with Android 10 or below, or you can manually import the file to the app folder (requires the device to be rooted)." />	
+<Label class="label" textWrap="true" text="8. Due to the variety of smartphones and Android customization available in the market, the app may not recognize your device storage when you try to make or import a backup. In that case, you should contact us, so we can try to add support to your device storage, although we do not guarantee that will be possible." />
+<Label class="label" textWrap="true" text="9. Limitation of Liability: Neither party will be liable to the other party or to any other person for any indirect, special, consequential or incidental loss, exemplary or other such damages, including, without limitation, damages arising out of or relating to: (i) loss of data, (ii) loss of income, (iii) loss of opportunity, (iv) lost profits, or (v) costs of recovery, however caused and based on any theory of liability, including, but not limited to, breach of contract, tort (including negligence), or violation of statute, whether or not such party has been advised of the possibility of such damages." />	
+<Button text="I ACCEPT" tap="agree" class="btn btn-secondary-add btn-rounded-lg"/> 	
+<Button text="I DO NOT ACCEPT" tap="disagree" class="btn btn-secondary-add btn-rounded-lg"/>	
+    </StackLayout>
+    </ScrollView>
+    
+</Page>

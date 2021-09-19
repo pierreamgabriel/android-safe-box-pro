@@ -1,0 +1,25 @@
+Page {
+background-color: #26abe2;    
+}
+.stackLayout {
+background-color: #26abe2;
+color: white;
+border-radius: 0px;  
+vertical-align: middle;    
+}
+
+.textfield {
+background-color: white; 
+color: black;    
+border-radius: 10px;    
+width: 80%;    
+}
+.btn-secondary {
+background-color: #6c757d; 
+color: white;    
+width: 80%;    
+}
+.go-back {
+color: #ffffff;	
+font-size: 20px;	
+}

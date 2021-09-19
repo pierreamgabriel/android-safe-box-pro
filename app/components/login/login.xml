@@ -1,0 +1,13 @@
+<Page navigatingTo="onNavigatingTo" actionBarHidden = "true" loaded="loaded">
+    <ScrollView  orientation="vertical" tap="dismissSoftInput">    
+<StackLayout class="login-wrapper stackLayout">
+<Label />    
+<Image style="width:130px" src="~/images/icon.png" />  
+<Label class="label" textWrap="true" text="Log in to your safe box" />    
+<TextField class="textfield" secure="true" text="{{ key }}" hint="Password" />    
+<StackLayout class="hr-light m-b-10" android:visibility="collapsed" />    
+<Button text="LOG IN" tap="openDB" class="btn btn-secondary btn-rounded-lg"/>     
+    </StackLayout>
+    </ScrollView>
+    
+</Page>

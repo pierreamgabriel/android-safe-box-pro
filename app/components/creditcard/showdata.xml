@@ -1,0 +1,18 @@
+<Page navigatingTo="onNavigatingTo" xmlns:actionBar="/actionBar">
+    <ActionBar class="actionbar" title="View, edit, or delete">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"></NavigationButton>
+</ActionBar>
+<ScrollView  orientation="vertical">	
+<StackLayout class="login-wrapper" tap="dismissSoftInput">
+    <TextField class="add_edit" text="{{brand2}}" hint="Brand" />
+    <TextField class="add_edit" text="{{number2}}" hint="Number" />
+    <TextField class="add_edit" text="{{verification2}}" hint="Verification code" />
+    <TextField class="add_edit" text="{{expiration2}}" hint="Expiration date" />
+    <TextField class="add_edit" text="{{password2}}" hint="Password" />
+	<TextField class="add_edit" text="{{other2}}" hint="Other info" />
+    <Button class="btn btn-secondary-add btn-rounded-lg"  rowId="{{rowId2}}" brand="{{brand2}}" number="{{number2}}" verification="{{verification2}}" expiration="{{expiration2}}" password="{{password2}}" other="{{other2}}" text="Save changes" tap="editData" />
+    <Button class="btn btn-secondary-add btn-rounded-lg" rowId="{{rowId2}}"  text="Delete data" tap="deleteData" />
+	<Label row="2" col="0" text="Go Back" class="go-back" textWrap="true" tap="goBack" />
+    </StackLayout>
+	</ScrollView>
+</Page>

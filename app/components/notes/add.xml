@@ -1,0 +1,9 @@
+<Page navigatingTo="onNavigatingTo" xmlns:actionBar="/actionBar">
+    <ActionBar class="actionbar" title="Add a note">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"></NavigationButton>
+<ActionItem tap="{{notes}}" android.systemIcon="ic_menu_save" android.position="actionBar"></ActionItem>
+</ActionBar>    
+<StackLayout>
+    <TextView id="textview" style="height:100%; background-color:white" hint="Tap to type" text="{{note}}" />
+    </StackLayout>
+</Page>

@@ -1,0 +1,17 @@
+<Page navigatingTo="onNavigatingTo" xmlns:actionBar="/actionBar">
+    <ActionBar class="actionbar" title="Add a credit card">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"></NavigationButton>
+</ActionBar>
+<ScrollView  orientation="vertical">	
+<StackLayout class="login-wrapper" tap="dismissSoftInput">
+    <TextField class="add_edit" text="{{ccBrand}}" hint="Brand" />
+    <TextField class="add_edit" text="{{ccNumber}}" hint="Number" />
+    <TextField class="add_edit" text="{{ccVerification}}" hint="Verification code" />
+    <TextField class="add_edit" text="{{ccEpiration}}" hint="Expiration date" />
+    <TextField class="add_edit" text="{{ccPass}}" hint="Password" />
+	<TextField class="add_edit" text="{{ccOther}}" hint="Other info" />
+    <Button class="btn btn-secondary-add btn-rounded-lg" text="Save" tap="{{creditCard}}" />
+    <Label row="2" col="0" text="Go Back" class="go-back" textWrap="true" tap="goBack" /> 
+    </StackLayout>
+	</ScrollView>
+</Page>

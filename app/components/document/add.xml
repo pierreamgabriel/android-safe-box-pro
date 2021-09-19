@@ -1,0 +1,17 @@
+<Page navigatingTo="onNavigatingTo" xmlns:actionBar="/actionBar">
+    <ActionBar class="actionbar" title="Add a document">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"></NavigationButton>
+</ActionBar>
+<ScrollView  orientation="vertical">	
+<StackLayout class="login-wrapper" tap="dismissSoftInput">
+    <TextField class="add_edit" text="{{docType}}" hint="ID card, passport, etc." />
+    <TextField class="add_edit" text="{{docNumber}}" hint="Document number" />
+    <TextField class="add_edit" text="{{docIssue}}" hint="Issue date" />
+    <TextField class="add_edit" text="{{docExpiration}}" hint="Expiration date" />
+    <TextField class="add_edit" text="{{docOther}}" hint="Other info" />
+    <Button class="btn btn-secondary-add btn-rounded-lg" text="Save" tap="{{documents}}" />
+    <Label row="2" col="0" text="Go Back" class="go-back" textWrap="true" tap="goBack" /> 
+    </StackLayout>
+	</ScrollView>
+</Page>
+

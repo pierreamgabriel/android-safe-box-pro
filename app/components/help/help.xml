@@ -1,0 +1,27 @@
+<Page navigatingTo="onNavigatingTo" xmlns:actionBar="/actionBar">
+    <ActionBar class="actionbar" title="Help">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"></NavigationButton>
+</ActionBar>
+    <ScrollView  orientation="vertical">    
+<StackLayout class="login-wrapper stackLayout">
+<Label />      
+<Label class="question" textWrap="true" text="How can I change my password?" />  
+<Label class="answer" textWrap="true" text="On the main screen, click the key icon at the top bar." /> 
+<Label class="question" textWrap="true" text="How is my data protected?" /> 
+<Label class="answer" textWrap="true" text="The database is encrypted with 256-bit AES encryption. A key is derived from your password, and it's not stored on your device. When you log in to the app, a temporary database is created to store your key, and it's encrypted with a random key every nine seconds. Once the app is closed, the temporary database is deleted. It's almost impossible for anyone to access your data without your password." />
+<Label class="question" textWrap="true" text="How can I safely log out of the app?" />	
+<Label class="answer" textWrap="true" text="On the main screen, click the power-off button." />	
+<Label class="question" textWrap="true" text="How can I back up my data?" />	
+<Label class="answer" textWrap="true" text="You can export the encrypted database by clicking the export icon at the top bar on the main screen (the third icon). The app will create a folder called AndroidSafeBox inside the Documents folder on your phone and place the exported file storage.db there. Bear in mind that you can only open the database in this app by using the import feature. Important: if you already have a backup named storage.db in the database folder, it will be overwritten when you make a new backup." />	
+<Label class="question" textWrap="true" text="How can I import a previously exported database?" />	
+<Label class="answer" textWrap="true" text="First, the database must be inside the Documents/AndroidSafeBox folder on your phone, and the file name must be storage.db. Then, you can click the import icon at the top bar on the main screen (the fourth icon). You can only access the data in the database by providing the password you used to encrypt it. If you changed your password after backing up the database, you must use the previous password. Important: when you import a database, the current database in the app is deleted." />
+<Label class="answer" textWrap="true" text="On Android 11 and above, the import feature works until the app is uninstalled or deleted. If you perform a backup and then uninstall the app, the backup file can't be imported automatically. In that case, you can use a device with Android 10 or below, or you can manually import the file to the app folder (requires the device to be rooted)." />		
+<Label class="question" textWrap="true" text="How can I contact you?" />
+<Label class="answer" textWrap="true" text="You can contact us at techstuff@virgopublishers.com. If you need support, send us all the details about the issue you're having." />
+<Label class="question" textWrap="true" text="" />	
+<Label class="question" textWrap="true" text="" />	
+<StackLayout class="hr-light m-b-10" android:visibility="collapsed" />       
+    </StackLayout>
+    </ScrollView>
+    
+</Page>

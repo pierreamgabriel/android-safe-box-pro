@@ -1,0 +1,17 @@
+.label-help {
+margin-bottom: 20px;
+font-size: 20px;	
+text-align: center; 
+width: 80%;   
+font-family: WorkSansBold;
+}
+.question {
+font-weight: bold;
+font-size: 15px;
+margin-bottom: 10px;
+font-family: WorkSansBold;
+}
+.answer {
+font-size: 15px;
+margin-bottom: 10px;
+}

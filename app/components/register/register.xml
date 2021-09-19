@@ -1,0 +1,16 @@
+<Page navigatingTo="onNavigatingTo" actionBarHidden = "true" loaded="loaded">
+<ScrollView  orientation="vertical" tap="dismissSoftInput">    
+<StackLayout class="login-wrapper stackLayout">
+<Label />    
+<Image style="width:130px" src="~/images/icon.png" />
+<Label class="label" textWrap="true" text="Create a strong password" />	
+<TextField class="textfield" secure="true" text="{{ key }}" hint="Password" />
+<TextField class="textfield" secure="true" text="{{ confirmKey }}" hint="Confirm password" />    
+<StackLayout class="hr-light m-b-10" android:visibility="collapsed" />    
+<Button text="Create Database" tap="openDB" class="btn btn-secondary btn-rounded-lg"/>
+<Label class="label2" textWrap="true" text="By clicking Create Database, I confirm I have read and accepted the Privacy and Terms available in the following link:" />
+<Label class="label3" textWrap="true" text="Privacy and Terms" tap="terms" />		
+    </StackLayout>
+    </ScrollView>
+    
+</Page>

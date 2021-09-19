@@ -1,0 +1,15 @@
+<Page navigatingTo="onNavigatingTo" actionBarHidden = "true" loaded="loaded">
+<ScrollView  orientation="vertical" tap="dismissSoftInput">    
+<StackLayout class="login-wrapper stackLayout">
+<Label />    
+<Image style="width:130px" src="~/images/icon.png" />         
+<TextField class="textfield" secure="true" text="{{ key }}" hint="Current password" />
+<TextField class="textfield" secure="true" text="{{ newKey }}" hint="New password" /> 
+<TextField class="textfield" secure="true" text="{{ confirmKey }}" hint="Confirm new password" />	
+<StackLayout class="hr-light m-b-10" android:visibility="collapsed" />    
+<Button text="CHANGE" tap="changePass" class="btn btn-secondary btn-rounded-lg"/>   
+<Label row="2" col="0" text="Go Back" class="go-back" textWrap="true" tap="goBack" />	
+    </StackLayout>
+    </ScrollView>
+    
+</Page>
