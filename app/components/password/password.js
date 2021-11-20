@@ -5,7 +5,7 @@ const Observable = require("data/observable").Observable;
 const createViewModel = require("../../main-view-model").createViewModel;
 const listViewModule = require("ui/list-view");
 const frameModule = require("ui/frame");
-const ads = require("../../admob").ads;
+const info = require("../../ads.js").info;
 
 
 let rowId = "";
@@ -14,7 +14,7 @@ let password = "";
 let other = "";
 
 function onNavigatingTo(args) {
-	ads();
+	
     let page = args.object; 
     let mainKey = {key:""};
     let requestKey = new processDb();
@@ -43,6 +43,9 @@ function generateViewModel() {
  viewModel.name2 = name;    
  viewModel.password2 = password; 
  viewModel.other2 = other;
+	
+ viewModel.src = info.src;	
+ viewModel.link = info.link;	
     
     return viewModel;
 }
@@ -70,5 +73,12 @@ exports.add = add;
 exports.generateViewModel = generateViewModel;
 exports.receiveData = receiveData;
 exports.goBack = goBack;
+
+function openlink() {
+	
+	utils.openUrl(info.link);
+}
+
+exports.openlink = openlink;
 
 

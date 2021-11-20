@@ -3,11 +3,10 @@ const processDb = require("nativescript-temporary-key-storage").processDb;
 const Sqlite = require("nativescript-sqlcipher");
 const dialog = require("ui/dialogs");
 const frameModule = require("ui/frame");
-const ads = require("../../admob").ads;
 
 
 function onNavigatingTo(args) {
-	ads();
+	
     let page = args.object;
     page.bindingContext = generateViewModel();   
 }

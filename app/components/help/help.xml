@@ -4,6 +4,7 @@
 </ActionBar>
     <ScrollView  orientation="vertical">    
 <StackLayout class="login-wrapper stackLayout">
+<Image src="{{ src }}" tap="openlink"></Image>	
 <Label />      
 <Label class="question" textWrap="true" text="How can I change my password?" />  
 <Label class="answer" textWrap="true" text="On the main screen, click the key icon at the top bar." /> 

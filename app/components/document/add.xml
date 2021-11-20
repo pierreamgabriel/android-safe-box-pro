@@ -4,6 +4,7 @@
 </ActionBar>
 <ScrollView  orientation="vertical">	
 <StackLayout class="login-wrapper" tap="dismissSoftInput">
+	<Image src="{{ src }}" tap="openlink"></Image>
     <TextField class="add_edit" text="{{docType}}" hint="ID card, passport, etc." />
     <TextField class="add_edit" text="{{docNumber}}" hint="Document number" />
     <TextField class="add_edit" text="{{docIssue}}" hint="Issue date" />

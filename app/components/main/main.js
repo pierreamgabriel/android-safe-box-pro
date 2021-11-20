@@ -6,6 +6,7 @@ const frameModule = require("ui/frame");
 const fileSystemModule = require("tns-core-modules/file-system");
 const application = require("application");
 const permissions = require('nativescript-permissions');
+const storage = require("nativescript-android-fs");
 
 
 exports.loaded = function() {  
@@ -93,91 +94,46 @@ function exportDB() {
 	
     function export_DB() {
 	
-	var storage1 = new java.io.File("/storage/emulated/0");
-	var storage2 = new java.io.File("/sdcard");	
-	var SDKver = android.os.Build.VERSION.SDK_INT;
-	var checkFile1 = fileSystemModule.File.exists("/storage/emulated/0/Documents/AndroidSafeBox/storage.db");
-	var checkFile2 = fileSystemModule.File.exists("/sdcard/Documents/AndroidSafeBox/storage.db"); 	
-			
-		
-		if ((SDKver >= 30 && checkFile1) || (SDKver >= 30 && checkFile2 )) {
-			let options = {title: "Alert", message: "Before making a new backup, you must delete the storage.db file inside the Documents/AndroidSafeBox folder.", okButtonText:"OK"};
-			dialog.confirm(options);
-			
-			}
-	
-		else if (storage1.exists()) {
-	try {
-        var javaFile = new java.io.File("/storage/emulated/0/Documents/AndroidSafeBox");
-        if (!javaFile.exists()) {
-            javaFile.mkdirs();
-            javaFile.setReadable(true);
-            javaFile.setWritable(true);
-        } 
-    }
-    catch (err) {
-        console.info("Error", err);
-    }	
-		
-    var myInput = new java.io.FileInputStream(application.android.context.getDatabasePath("storage.db").getAbsolutePath());
-    var myOutput = new java.io.FileOutputStream("/storage/emulated/0/Documents/AndroidSafeBox/storage.db");
+	var check = storage.check("/Documents/AndroidSafeBox", "storage.db");
+	var permission = storage.permission("/Documents/AndroidSafeBox", "storage.db");
 
-    try {
-        var buffer = java.lang.reflect.Array.newInstance(java.lang.Byte.class.getField("TYPE").get(null), 1024);
-        var length;
-        while ((length = myInput.read(buffer)) > 0) {
-            myOutput.write(buffer, 0, length);
-        }
-    }
-    catch (err) {
-        alert("Something went wrong. Please try again, and if the problem persists, contact us at techstuff@virgopublishers.com.");
-    } finally {
-		let options = {title:"Success", message:"Your encrypted database was exported to Documents/AndroidSafeBox/storage.db on your phone.", okButtonText:"OK"};    
-        dialog.alert(options);
-	}
+	if (check) {
 
-    myOutput.flush();
-    myOutput.close();
-    myInput.close();
-			
-		} else if (storage2.exists()) {
-	try {
-        var javaFile = new java.io.File("/sdcard/Documents/AndroidSafeBox");
-        if (!javaFile.exists()) {
-            javaFile.mkdirs();
-            javaFile.setReadable(true);
-            javaFile.setWritable(true);
-        } 
-    }
-    catch (err) {
-        console.info("Error", err);
-    }	
-		
-    var myInput = new java.io.FileInputStream(application.android.context.getDatabasePath("storage.db").getAbsolutePath());
-    var myOutput = new java.io.FileOutputStream("/sdcard/Documents/AndroidSafeBox/storage.db");
+	if (!permission) {
 
-    try {
-        var buffer = java.lang.reflect.Array.newInstance(java.lang.Byte.class.getField("TYPE").get(null), 1024);
-        var length;
-        while ((length = myInput.read(buffer)) > 0) {
-            myOutput.write(buffer, 0, length);
-        }
-    }
-    catch (err) {
-        alert("Something went wrong. Please try again, and if the problem persists, contact us at techstuff@virgopublishers.com.");
-    } finally {
-		let options = {title:"Success", message:"Your encrypted database was exported to Documents/AndroidSafeBox/storage.db on your phone.", okButtonText:"OK"};    
-        dialog.alert(options);
-	}
+	let options = {title: "Alert", message: "Before making a new backup, you must delete the storage.db file inside the Documents/AndroidSafeBox folder.", okButtonText:"OK"};
+	dialog.confirm(options);
 
-    myOutput.flush();
-    myOutput.close();
-    myInput.close();		
-			
 	} else {
-			
-			alert("Sorry, we couldn't identify your device storage. Contact us at techstuff@virgopublishers.com.")
-		}
+
+	if (storage.save("/Documents/AndroidSafeBox")) {
+
+	let options = {title:"Success", message:"Your encrypted database was exported to Documents/AndroidSafeBox/storage.db on your phone.", okButtonText:"OK"};    
+	dialog.alert(options);
+
+	} else {
+
+	alert("Something went wrong. Please try again, and if the problem persists, contact us at techstuff@virgopublishers.com.");
+
+	}
+
+	} 
+
+	} else {
+
+	if (storage.save("/Documents/AndroidSafeBox")) {
+
+	let options = {title:"Success", message:"Your encrypted database was exported to Documents/AndroidSafeBox/storage.db on your phone.", okButtonText:"OK"};    
+	dialog.alert(options);
+
+	} else {
+
+	alert("Something went wrong. Please try again, and if the problem persists, contact us at techstuff@virgopublishers.com.");
+
+	}
+
+	}
+		
 	}
 }
 exports.exportDB = exportDB;
@@ -217,57 +173,38 @@ function importDB() {
 	
 	function import_DB() {
 	
-		if(fileSystemModule.File.exists("/storage/emulated/0/Documents/AndroidSafeBox/storage.db")) {
-    var myInput = new java.io.FileInputStream("/storage/emulated/0/Documents/AndroidSafeBox/storage.db");
-    var myOutput = new java.io.FileOutputStream(application.android.context.getDatabasePath("storage.db").getAbsolutePath());
+	var check = storage.check("/Documents/AndroidSafeBox", "storage.db");
+	var permission = storage.permission("/Documents/AndroidSafeBox", "storage.db");
 
-    try {
-        var buffer = java.lang.reflect.Array.newInstance(java.lang.Byte.class.getField("TYPE").get(null), 1024);
-        var length;
-        while ((length = myInput.read(buffer)) > 0) {
-            myOutput.write(buffer, 0, length);
-        }
-    }
-    catch (err) {
-        console.info("Error");
-    } finally {
-		let options = {title:"Success", message:"Your database was successfully imported. You need to log in again.", okButtonText:"OK"};    
-        dialog.alert(options).then ( () => {
-		Sqlite.deleteDatabase("logged");    
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 	
-		});
-	}
+	if (check) {
 
-    myOutput.flush();
-    myOutput.close();
-    myInput.close();
-	} else if (fileSystemModule.File.exists("/sdcard/Documents/AndroidSafeBox/storage.db")) {
-		var myInput = new java.io.FileInputStream("/sdcard/Documents/AndroidSafeBox/storage.db");
-        var myOutput = new java.io.FileOutputStream(application.android.context.getDatabasePath("storage.db").getAbsolutePath());
+	if (!permission) {
 
-    try {
-        var buffer = java.lang.reflect.Array.newInstance(java.lang.Byte.class.getField("TYPE").get(null), 1024);
-        var length;
-        while ((length = myInput.read(buffer)) > 0) {
-            myOutput.write(buffer, 0, length);
-        }
-    }
-    catch (err) {
-        console.info("Error");
-    } finally {
-		let options = {title:"Success", message:"Your database was successfully imported. You need to log in again.", okButtonText:"OK"};    
-        dialog.alert(options).then ( () => {
-		Sqlite.deleteDatabase("logged");    
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 	
-		});
-	}
+	let options = {title: "Alert", message: "Sorry, we can't import your backup on Android 11+.", okButtonText:"OK"};
+	dialog.confirm(options);
 
-    myOutput.flush();
-    myOutput.close();
-    myInput.close();	   
-			   
 	} else {
-		alert("Something went wrong. Please make sure there is a folder named AndroidSafeBox inside the Documents folder in this device storage. Also, the AndroidSafeBox folder must contain a storage.db file.");
+
+	if (storage.import("/Documents/AndroidSafeBox", "storage.db")) {
+
+	let options = {title:"Success", message:"Your database was successfully imported. You need to log in again.", okButtonText:"OK"};    
+	dialog.alert(options).then ( () => {
+	Sqlite.deleteDatabase("logged");    
+	frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 	
+			});
+
+	} else {
+
+	alert("Something went wrong. Please make sure there is a folder named AndroidSafeBox inside the Documents folder in this device storage. Also, the AndroidSafeBox folder must contain a storage.db file.");
+
+	}
+
+	} 
+
+	} else {
+
+	alert("Something went wrong. Please make sure there is a folder named AndroidSafeBox inside the Documents folder in this device storage. Also, the AndroidSafeBox folder must contain a storage.db file.");
+
 	}
 	}
 }

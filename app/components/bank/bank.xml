@@ -10,7 +10,7 @@
             <Label rowId="{{id}}" name="{{bank_name}}" account="{{account_number}}" password="{{password}}" other="{{other_info}}" text="{{bank_name}}" tap="receiveData" class="list-group-item"/>   
        </StackLayout>
         </ListView.itemTemplate>
-    </ListView>   
+    </ListView>      
     </StackLayout>
 </Page>
 

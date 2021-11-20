@@ -4,6 +4,7 @@ application.run({ moduleName: "app-root" });
 application.setCssFileName("app.css");
 const frame = require('ui/frame');
 const Sqlite = require("nativescript-sqlcipher");
+const createads = require("./ads.js").createads;
 
 
 if (application.android) {
@@ -16,5 +17,5 @@ function backEvent(args) {
    }
 }
 
-
+createads();
     

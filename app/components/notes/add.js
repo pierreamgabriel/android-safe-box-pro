@@ -4,11 +4,10 @@ const createViewModel = require("../../main-view-model").createViewModel;
 const textViewModule = require("ui/text-view");
 const dialog = require("ui/dialogs");
 const frameModule = require("ui/frame");
-const ads = require("../../admob").ads;
 
 
 function onNavigatingTo(args) {
-	ads();
+	
     let page = args.object; 
     let mainKey = {key:""};
     let requestKey = new processDb();

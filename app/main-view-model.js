@@ -2,6 +2,7 @@ const Observable = require("data/observable").Observable;
 const Sqlite = require("nativescript-sqlcipher");
 const dialog = require("ui/dialogs");
 const frameModule = require("ui/frame");
+const info = require("./ads.js").info;
 
 
 function createViewModel(db) {
@@ -35,6 +36,9 @@ function createViewModel(db) {
     viewModel.ccResults = [];
     viewModel.docResults = [];
     viewModel.noteResults = [];
+	
+	viewModel.src = info.src;
+	viewModel.link = info.link;
     
     
     viewModel.webSite = function(args) {

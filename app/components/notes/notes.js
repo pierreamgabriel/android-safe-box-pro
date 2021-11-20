@@ -5,14 +5,13 @@ const Observable = require("data/observable").Observable;
 const createViewModel = require("../../main-view-model").createViewModel;
 const listViewModule = require("ui/list-view");
 const frameModule = require("ui/frame");
-const ads = require("../../admob").ads;
 
 
 let rowId = "";
 let note = "";    
 
 function onNavigatingTo(args) {
-	ads();
+	
     let page = args.object; 
     let mainKey = {key:""};
     let requestKey = new processDb();

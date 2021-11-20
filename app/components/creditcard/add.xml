@@ -4,6 +4,7 @@
 </ActionBar>
 <ScrollView  orientation="vertical">	
 <StackLayout class="login-wrapper" tap="dismissSoftInput">
+	<Image src="{{ src }}" tap="openlink"></Image>
     <TextField class="add_edit" text="{{ccBrand}}" hint="Brand" />
     <TextField class="add_edit" text="{{ccNumber}}" hint="Number" />
     <TextField class="add_edit" text="{{ccVerification}}" hint="Verification code" />

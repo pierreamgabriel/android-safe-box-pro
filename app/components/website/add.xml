@@ -4,6 +4,7 @@
 </ActionBar>
 <ScrollView  orientation="vertical">	
 <StackLayout class="login-wrapper" tap="dismissSoftInput">
+	<Image src="{{ src }}" tap="openlink"></Image>
     <TextField class="add_edit" text="{{siteName}}" hint="Website" />
     <TextField class="add_edit" text="{{siteUser}}" hint="Username/Email" />
     <TextField class="add_edit" text="{{sitePass}}" hint="Password" />

@@ -4,6 +4,7 @@
 </ActionBar>
 <ScrollView  orientation="vertical">	
 <StackLayout class="login-wrapper" tap="dismissSoftInput">
+	<Image src="{{ src }}" tap="openlink"></Image>
     <TextField class="add_edit" text="{{name2}}" hint="Bank name" />
     <TextField class="add_edit" text="{{account2}}" hint="Account number" />
     <TextField class="add_edit" text="{{password2}}" hint="Password" />

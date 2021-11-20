@@ -4,11 +4,11 @@ const Sqlite = require("nativescript-sqlcipher");
 const dialog = require("ui/dialogs");
 const frameModule = require("ui/frame");
 const utils = require("tns-core-modules/utils/utils");
-const ads = require("../../admob").ads;
+const info = require("../../ads.js").info;
 
 
 function onNavigatingTo(args) {
-	ads();
+	
     let page = args.object;
     page.bindingContext = generateViewModel();   
 }
@@ -89,3 +89,10 @@ function dismissSoftInput(args) {
     utils.ad.dismissSoftInput();
 }
 exports.dismissSoftInput = dismissSoftInput;
+
+function openlink() {
+	
+	utils.openUrl(info.link);
+}
+
+exports.openlink = openlink;

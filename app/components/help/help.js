@@ -1,25 +1,25 @@
 const frameModule = require("ui/frame");
-const ads = require("../../admob").ads;
 const application = require("application");
-const preloadAdMob = require("../../admob").preloadAdMob;
-const showad = require("../../admob").showad;
+const utils = require("tns-core-modules/utils/utils");
+const info = require("../../ads.js").info;
 
-function goBack(){
-showad();	
+function goBack(){	
 frameModule.topmost().navigate("components/main/main");     
 }
 exports.goBack = goBack;
 
-function onNavigatingTo(args) {
-	ads();
-	preloadAdMob();
+function onNavigatingTo(args) { 
+	
+let page = args.object;
+page.bindingContext = info;	
+	
 }
+
 exports.onNavigatingTo = onNavigatingTo;
 
-if (application.android) {
-    application.android.on(application.AndroidApplication.activityBackPressedEvent, callAds);
+function openlink() {
+	
+	utils.openUrl(info.link);
 }
 
-function callAds() {
-	showad();
-}
+exports.openlink = openlink;
