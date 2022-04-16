@@ -35,7 +35,7 @@ function changePass() {
       changeKey.newKey = "";
       changeKey.confirmKey = "";	
 	  Sqlite.deleteDatabase("logged");    
-      frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true});	
+      frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true});	
       }, error => {
         alert("Your current password is incorrect. Please try again.");
     });
@@ -51,12 +51,12 @@ function goBack(){
 changeKey.key = "";
 changeKey.newKey = "";
 changeKey.confirmKey = "";
-frameModule.topmost().navigate({moduleName:"components/main/main", clearHistory: true});     
+frameModule.Frame.topmost().navigate({moduleName:"components/main/main", clearHistory: true});     
 }
 exports.goBack = goBack;
 exports.changePass = changePass;
 
-function dismissSoftInput(args) {
+function dismissSoftInput() {
     utils.ad.dismissSoftInput();
 }
 exports.dismissSoftInput = dismissSoftInput;
@@ -69,7 +69,7 @@ function backEvent(args) {
 	changeKey.key = "";
     changeKey.newKey = "";
     changeKey.confirmKey = "";
-    var currentPage = frameModule.topmost().currentPage;
+    let currentPage = frameModule.Frame.topmost().currentPage;
     if (currentPage && currentPage.exports && typeof currentPage.exports.backEvent === "function") {
          currentPage.exports.backEvent(args);
    }

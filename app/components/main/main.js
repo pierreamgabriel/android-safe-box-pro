@@ -1,10 +1,6 @@
 const Sqlite = require("nativescript-sqlcipher");
-const layout = require("ui/layouts/grid-layout");
-const observableModule = require("data/observable");
 const dialog = require("ui/dialogs");
 const frameModule = require("ui/frame");
-const fileSystemModule = require("tns-core-modules/file-system");
-const application = require("application");
 const permissions = require('nativescript-permissions');
 const storage = require("nativescript-android-fs");
 
@@ -12,10 +8,10 @@ const storage = require("nativescript-android-fs");
 exports.loaded = function() {  
 	
 if (!Sqlite.exists("registered") && !Sqlite.exists("logged")) {
-    frameModule.topmost().navigate({moduleName:"components/register/register", clearHistory: true});  
+    frameModule.Frame.topmost().navigate({moduleName:"components/register/register", clearHistory: true});  
     } else   
 if (!Sqlite.exists("logged")) {
-    frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true});  
+    frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true});  
     } 
 };
 
@@ -23,28 +19,28 @@ exports.goTo = function(id) {
 id = id.object.id;
 switch (id) {
     case "personalDoc":
-frameModule.topmost().navigate("components/document/document")   
+frameModule.Frame.topmost().navigate("components/document/document")   
     break;
     case "note":
-frameModule.topmost().navigate("components/notes/notes")   
+frameModule.Frame.topmost().navigate("components/notes/notes")   
     break;
     case "password":
-frameModule.topmost().navigate("components/password/password")   
+frameModule.Frame.topmost().navigate("components/password/password")   
     break;
     case "webLogin":
-frameModule.topmost().navigate("components/website/website")   
+frameModule.Frame.topmost().navigate("components/website/website")   
     break;
     case "creditCard":
-frameModule.topmost().navigate("components/creditcard/creditcard")   
+frameModule.Frame.topmost().navigate("components/creditcard/creditcard")   
     break;
     case "bank":
-frameModule.topmost().navigate("components/bank/bank")   
+frameModule.Frame.topmost().navigate("components/bank/bank")   
     break;
 	case "help":
-	frameModule.topmost().navigate("components/help/help")	
+	frameModule.Frame.topmost().navigate("components/help/help")	
 	break;	
 	case "change":
-	frameModule.topmost().navigate("components/change/change")	
+	frameModule.Frame.topmost().navigate("components/change/change")	
     break;    
 }    
 }
@@ -54,7 +50,7 @@ exports.logout = function() {
         dialog.confirm(options).then(function(result){
         if(result === true) {    
         Sqlite.deleteDatabase("logged");    
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 
+        frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 
         }
         });
 }
@@ -94,8 +90,8 @@ function exportDB() {
 	
     function export_DB() {
 	
-	var check = storage.check("/Documents/AndroidSafeBox", "storage.db");
-	var permission = storage.permission("/Documents/AndroidSafeBox", "storage.db");
+	let check = storage.check("/Documents/AndroidSafeBox", "storage.db");
+	let permission = storage.permission("/Documents/AndroidSafeBox", "storage.db");
 
 	if (check) {
 
@@ -173,8 +169,8 @@ function importDB() {
 	
 	function import_DB() {
 	
-	var check = storage.check("/Documents/AndroidSafeBox", "storage.db");
-	var permission = storage.permission("/Documents/AndroidSafeBox", "storage.db");
+	let check = storage.check("/Documents/AndroidSafeBox", "storage.db");
+	let permission = storage.permission("/Documents/AndroidSafeBox", "storage.db");
 
 	if (check) {
 
@@ -190,7 +186,7 @@ function importDB() {
 	let options = {title:"Success", message:"Your database was successfully imported. You need to log in again.", okButtonText:"OK"};    
 	dialog.alert(options).then ( () => {
 	Sqlite.deleteDatabase("logged");    
-	frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 	
+	frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 	
 			});
 
 	} else {

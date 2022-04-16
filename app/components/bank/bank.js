@@ -3,7 +3,6 @@ const Sqlite = require("nativescript-sqlcipher");
 const dialog = require("ui/dialogs");
 const Observable = require("data/observable").Observable;
 const createViewModel = require("../../main-view-model").createViewModel;
-const listViewModule = require("ui/list-view");
 const frameModule = require("ui/frame");
 const info = require("../../ads.js").info;
 
@@ -26,7 +25,7 @@ function onNavigatingTo(args) {
         Sqlite.deleteDatabase("logged");     
         let options = {title:"Session expired", message:"You need to log in again.", okButtonText:"OK"};    
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 
+        frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 
         });
     } else {
         new Sqlite("storage.db", mainKey).then(db =>{
@@ -36,10 +35,10 @@ function onNavigatingTo(args) {
 }
 
 function add() {
-frameModule.topmost().navigate("components/bank/add");    
+frameModule.Frame.topmost().navigate("components/bank/add");    
 }
 function generateViewModel() {
- var viewModel = new Observable();
+ let viewModel = new Observable();
  viewModel.rowId2 = rowId;    
  viewModel.name2 = name;    
  viewModel.account2 = account; 
@@ -58,16 +57,16 @@ function receiveData(args){
  account = args.object.account; 
  password = args.object.password; 
  other = args.object.other;     
-frameModule.topmost().navigate("components/bank/showdata")    
+frameModule.Frame.topmost().navigate("components/bank/showdata")    
 }
 
 exports.backEvent = function(args) {
   args.cancel = true; 
-  frameModule.topmost().navigate({moduleName:"components/main/main",clearHistory: true }); 
+  frameModule.Frame.topmost().navigate({moduleName:"components/main/main",clearHistory: true }); 
  
 }
 function goBack(){
-frameModule.topmost().navigate("components/main/main");     
+frameModule.Frame.topmost().navigate("components/main/main");     
 }
 
 exports.onNavigatingTo = onNavigatingTo;
@@ -77,7 +76,6 @@ exports.receiveData = receiveData;
 exports.goBack = goBack;
 
 function openlink() {
-	
 	utils.openUrl(info.link);
 }
 

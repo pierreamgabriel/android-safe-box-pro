@@ -40,13 +40,13 @@ function openDB() {
 	  openKey.confirmKey = "";	  
       page.bindingContext = createViewModel(db);  
      }, error => {
-            console.log("CREATE TABLE ERROR", error);
+            
         });
     }, error => {
-        console.log(error);
+        
     }).then(function() {
         if (Sqlite.exists("registered")) {
-         frameModule.topmost().navigate({moduleName:"components/main/main", clearHistory: true});    
+         frameModule.Frame.topmost().navigate({moduleName:"components/main/main", clearHistory: true});    
         }
     });
     }
@@ -59,13 +59,13 @@ dialogsModule.alert({title:"",message:"This is your first access. To create your
 };
 exports.openDB = openDB;
 
-function dismissSoftInput(args) {
+function dismissSoftInput() {
     utils.ad.dismissSoftInput();
 }
 exports.dismissSoftInput = dismissSoftInput;
 
 function terms() {
-	frameModule.topmost().navigate({moduleName:"components/terms/terms", clearHistory: true});
+	frameModule.Frame.topmost().navigate({moduleName:"components/terms/terms", clearHistory: true});
 	openKey.key = "";
 	openKey.confirmKey = "";
 }
@@ -78,7 +78,7 @@ if (application.android) {
 function backEvent(args) {
 	openKey.key = "";
     openKey.confirmKey = "";
-    var currentPage = frameModule.topmost().currentPage;
+    let currentPage = frameModule.Frame.topmost().currentPage;
     if (currentPage && currentPage.exports && typeof currentPage.exports.backEvent === "function") {
          currentPage.exports.backEvent(args);
    }

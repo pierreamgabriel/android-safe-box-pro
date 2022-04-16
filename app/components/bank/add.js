@@ -28,12 +28,12 @@ function onNavigatingTo(args) {
 }
 
 function goBack(){
-frameModule.topmost().navigate("components/bank/bank");     
+frameModule.Frame.topmost().navigate("components/bank/bank");     
 }
 exports.onNavigatingTo = onNavigatingTo;
 exports.goBack = goBack;
 
-function dismissSoftInput(args) {
+function dismissSoftInput() {
     utils.ad.dismissSoftInput();
 }
 exports.dismissSoftInput = dismissSoftInput;

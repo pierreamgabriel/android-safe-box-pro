@@ -2,7 +2,7 @@ const frameModule = require("ui/frame");
 const dialog = require("ui/dialogs");
 
 exports.agree = function() {
-    frameModule.topmost().navigate("components/register/register");
+    frameModule.Frame.topmost().navigate("components/register/register");
 };
 
 exports.disagree = function() {

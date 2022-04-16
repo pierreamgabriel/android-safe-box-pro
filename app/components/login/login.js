@@ -1,7 +1,6 @@
 const observableModule = require("data/observable");
 const keyStorage = require("nativescript-temporary-key-storage").keyStorage;
 const Sqlite = require("nativescript-sqlcipher");
-const dialogsModule = require("ui/dialogs");
 const frameModule = require("ui/frame");
 const utils = require("tns-core-modules/utils/utils");
 const CryptoJS = require("crypto-js");
@@ -30,18 +29,18 @@ function openDB() {
       openKey.key = "";      
       page.bindingContext = createViewModel(db);  
      }, error => {
-            console.log("CREATE TABLE ERROR", error);
+            
         });
     }, error => {
         alert("There was an error opening the database. Please check your password and try again.");
     }).then(function() {
         if (Sqlite.exists("logged")) {
-         frameModule.topmost().navigate({moduleName:"components/main/main", clearHistory: true});    
+         frameModule.Frame.topmost().navigate({moduleName:"components/main/main", clearHistory: true});    
         }
     });
     }
 
-function dismissSoftInput(args) {
+function dismissSoftInput() {
     utils.ad.dismissSoftInput();
 }
 exports.dismissSoftInput = dismissSoftInput;
@@ -58,7 +57,7 @@ if (application.android) {
 
 function backEvent(args) {
 	openKey.key = "";
-    var currentPage = frameModule.topmost().currentPage;
+    let currentPage = frameModule.Frame.topmost().currentPage;
     if (currentPage && currentPage.exports && typeof currentPage.exports.backEvent === "function") {
          currentPage.exports.backEvent(args);
    }

@@ -7,7 +7,6 @@ const utils = require("tns-core-modules/utils/utils");
 const info = require("../../ads.js").info;
 
 function onNavigatingTo(args) {
-	
     let page = args.object;
     page.bindingContext = generateViewModel();   
 }
@@ -26,7 +25,7 @@ let mainKey = {key:""};
         Sqlite.deleteDatabase("logged");     
         let options = {title:"Session expired", message:"You need to login again.", okButtonText:"OK"};    
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true});   
+        frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true});   
         });
     } else {
       new Sqlite("storage.db", mainKey).then(db => {
@@ -34,7 +33,7 @@ let mainKey = {key:""};
      }).then(function() {
         let options = {title:"", message:"The information was successfully updated.",okButtonText: "OK" };        
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate("components/password/password");        
+        frameModule.Frame.topmost().navigate("components/password/password");        
                 });  	  
     });
     }
@@ -59,7 +58,7 @@ let mainKey = {key:""};
         Sqlite.deleteDatabase("logged");     
         let options = {title:"Session expired", message:"You need to login again.", okButtonText:"OK"};    
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true});    
+        frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true});    
         });
     } else {
       new Sqlite("storage.db", mainKey).then(db => {
@@ -67,27 +66,26 @@ let mainKey = {key:""};
      }).then(function() {
         let options = {title:"", message:"The information was successfully deleted.",okButtonText: "OK" };        
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate("components/password/password");        
+        frameModule.Frame.topmost().navigate("components/password/password");        
                 }); 
     });
     }
     },0);    
 }
 function goBack(){
-frameModule.topmost().navigate("components/password/password");     
+frameModule.Frame.topmost().navigate("components/password/password");     
 }
 exports.onNavigatingTo = onNavigatingTo;
 exports.editData = editData;
 exports.deleteData = deleteData;
 exports.goBack = goBack;
 
-function dismissSoftInput(args) {
+function dismissSoftInput() {
     utils.ad.dismissSoftInput();
 }
 exports.dismissSoftInput = dismissSoftInput;
 
 function openlink() {
-	
 	utils.openUrl(info.link);
 }
 

@@ -6,7 +6,6 @@ const frameModule = require("ui/frame");
 
 
 function onNavigatingTo(args) {
-	
     let page = args.object;
     page.bindingContext = generateViewModel();   
 }
@@ -23,7 +22,7 @@ let mainKey = {key:""};
         Sqlite.deleteDatabase("logged");     
         let options = {title:"Session expired", message:"You need to login again.", okButtonText:"OK"};    
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true});    
+        frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true});    
         });
     } else {
       new Sqlite("storage.db", mainKey).then(db => {
@@ -31,7 +30,7 @@ let mainKey = {key:""};
      }).then(function() {
         let options = {title:"", message:"The information was successfully updated.",okButtonText: "OK" };        
         dialog.alert(options).then(function(){
-       frameModule.topmost().navigate("components/notes/notes");     
+       frameModule.Frame.topmost().navigate("components/notes/notes");     
                 }); 	  
     });
     }
@@ -56,7 +55,7 @@ let mainKey = {key:""};
         Sqlite.deleteDatabase("logged");     
         let options = {title:"Session expired", message:"You need to login again.", okButtonText:"OK"};    
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true});    
+        frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true});    
         });
     } else {
       new Sqlite("storage.db", mainKey).then(db => {
@@ -64,14 +63,14 @@ let mainKey = {key:""};
      }).then(function() {
         let options = {title:"", message:"The information was successfully deleted.",okButtonText: "OK" };        
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate("components/notes/notes");        
+        frameModule.Frame.topmost().navigate("components/notes/notes");        
                 }); 
     });
     }
     },0);    
 }
 function goBack(){
-frameModule.topmost().navigate("components/notes/notes");     
+frameModule.Frame.topmost().navigate("components/notes/notes");     
 }
 exports.onNavigatingTo = onNavigatingTo;
 exports.editData = editData;

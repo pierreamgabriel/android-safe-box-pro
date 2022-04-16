@@ -18,7 +18,7 @@ function onNavigatingTo(args) {
         Sqlite.deleteDatabase("logged");     
         let options = {title:"Session expired", message:"You need to login again.", okButtonText:"OK"};    
         dialog.alert(options).then(function(){
-        frameModule.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 
+        frameModule.Frame.topmost().navigate({moduleName:"components/login/login", clearHistory: true}); 
         });
     } else {
         new Sqlite("storage.db", mainKey).then(db =>{
@@ -28,18 +28,17 @@ function onNavigatingTo(args) {
 }
 
 function goBack(){
-frameModule.topmost().navigate("components/creditcard/creditcard");     
+frameModule.Frame.topmost().navigate("components/creditcard/creditcard");     
 }
 exports.onNavigatingTo = onNavigatingTo;
 exports.goBack = goBack;
 
-function dismissSoftInput(args) {
+function dismissSoftInput() {
     utils.ad.dismissSoftInput();
 }
 exports.dismissSoftInput = dismissSoftInput;
 
 function openlink() {
-	
 	utils.openUrl(info.link);
 }
 
