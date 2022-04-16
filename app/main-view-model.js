@@ -1,5 +1,4 @@
 const Observable = require("data/observable").Observable;
-const Sqlite = require("nativescript-sqlcipher");
 const dialog = require("ui/dialogs");
 const frameModule = require("ui/frame");
 const info = require("./ads.js").info;
@@ -47,7 +46,7 @@ function createViewModel(db) {
         }else {
         db.execSQL("INSERT INTO website (site, username, password) VALUES (?, ?, ?)", [this.siteName, this.siteUser, this.sitePass]).then(id => {
             dialog.alert({title: "",message: "Data added successfully.",okButtonText: "Ok"}).then(function(){
-        frameModule.topmost().navigate("components/website/website");    
+        frameModule.Frame.topmost().navigate("components/website/website");    
         });
         }, error => {
             dialog.alert("There was an error adding your data. Please try again.");
@@ -61,7 +60,7 @@ function createViewModel(db) {
         }else {
         db.execSQL("INSERT INTO other_passwords (name, password, other_info) VALUES (?, ?, ?)", [this.otherName, this.otherPass, this.otherInfo]).then(id => {
              dialog.alert({title: "",message: "Data added successfully.",okButtonText: "OK"}).then(function(){
-        frameModule.topmost().navigate("components/password/password");    
+        frameModule.Frame.topmost().navigate("components/password/password");    
         });         
         }, error => {
             dialog.alert("There was an error adding your data. Please try again.");
@@ -75,7 +74,7 @@ function createViewModel(db) {
         }else {
         db.execSQL("INSERT INTO bank_account (bank_name, account_number, password, other_info) VALUES (?, ?, ?, ?)", [this.bankName, this.bankAccount, this.bankPass, this.bankOther]).then(id => {
              dialog.alert({title: "",message: "Data added successfully.",okButtonText: "OK"}).then(function(){
-        frameModule.topmost().navigate("components/bank/bank");
+        frameModule.Frame.topmost().navigate("components/bank/bank");
         });         
         }, error => {
             dialog.alert("There was an error adding your data. Please try again.");
@@ -89,7 +88,7 @@ function createViewModel(db) {
         }else {
         db.execSQL("INSERT INTO credit_card (brand, number, verification, expiration_date, password, other_info) VALUES (?, ?, ?, ?, ?, ?)", [this.ccBrand, this.ccNumber, this.ccVerification, this.ccEpiration, this.ccPass, this.ccOther]).then(id => {
              dialog.alert({title: "",message: "Data added successfully.",okButtonText: "OK"}).then(function(){
-        frameModule.topmost().navigate("components/creditcard/creditcard");
+        frameModule.Frame.topmost().navigate("components/creditcard/creditcard");
         });         
         }, error => {
             dialog.alert("There was an error adding your data. Please try again.");
@@ -103,7 +102,7 @@ function createViewModel(db) {
         }else {   
         db.execSQL("INSERT INTO documents (type, number, issue_date, expiration_date, other_info) VALUES (?, ?, ?, ?, ?)", [this.docType, this.docNumber, this.docIssue, this.docExpiration, this.docOther]).then(id => {
              dialog.alert({title: "",message: "Data added successfully.",okButtonText: "OK"}).then(function(){
-        frameModule.topmost().navigate("components/document/document");
+        frameModule.Frame.topmost().navigate("components/document/document");
         });         
         }, error => {
             dialog.alert("There was an error adding your data. Please try again.");
@@ -117,7 +116,7 @@ function createViewModel(db) {
         } else {
         db.execSQL("INSERT INTO notes (note) VALUES (?)", [this.note]).then(id => {
              dialog.alert({title: "",message: "Data added successfully.",okButtonText: "OK"}).then(function(){
-        frameModule.topmost().navigate("components/notes/notes");
+        frameModule.Frame.topmost().navigate("components/notes/notes");
         });         
         }, error => {
             dialog.alert("There was an error adding your data. Please try again.");
@@ -132,11 +131,11 @@ function createViewModel(db) {
             viewModel.websiteResults = [];
         }
         db.all("SELECT * FROM website").then(rows => {
-            for(var row in rows) {
+            for(let row in rows) {
                 viewModel.websiteResults.push({id: rows[row][0], site: rows[row][1], username: rows[row][2], password: rows[row][3]});
             }
         }, (e) => {
-            console.log(e);
+            
         });
     }
     
@@ -145,11 +144,11 @@ function createViewModel(db) {
             viewModel.otherPassResults = [];
         }
         db.all("SELECT * FROM other_passwords").then(rows => {
-            for(var row in rows) {
+            for(let row in rows) {
                 viewModel.otherPassResults.push({id: rows[row][0], name: rows[row][1], password: rows[row][2], other_info: rows[row][3]});
             }
         }, (error) => {
-            console.log(e);
+            
         });
     }
     
@@ -158,11 +157,11 @@ function createViewModel(db) {
             viewModel.bankResults = [];
         }
         db.all("SELECT * FROM bank_account").then(rows => {
-            for(var row in rows) {
+            for(let row in rows) {
                 viewModel.bankResults.push({id: rows[row][0], bank_name: rows[row][1], account_number: rows[row][2], password: rows[row][3], other_info:rows[row][4] });
             }
         }, (error) => {
-            console.log(e);
+            
         });
     }
     
@@ -171,11 +170,11 @@ function createViewModel(db) {
             viewModel.ccResults = [];
         }
         db.all("SELECT * FROM credit_card").then(rows => {
-            for(var row in rows) {
+            for(let row in rows) {
                 viewModel.ccResults.push({id: rows[row][0], brand: rows[row][1], number: rows[row][2], verification: rows[row][3], expiration: rows[row][4], password: rows[row][5], other_info:rows[row][6]});
             }
         }, (error) => {
-            console.log(e);
+            
         });
     }
     
@@ -184,11 +183,11 @@ function createViewModel(db) {
             viewModel.docResults = [];
         }
         db.all("SELECT * FROM documents").then(rows => {
-            for(var row in rows) {   
+            for(let row in rows) {   
                 viewModel.docResults.push({id: rows[row][0], type: rows[row][1], number: rows[row][2], issue: rows[row][3], expiration: rows[row][4], other: rows[row][5]});
             }
         }, (error) => {
-            console.log(e);
+            
         });
         
     }
@@ -198,11 +197,11 @@ function createViewModel(db) {
             viewModel.noteResults = [];
         }
         db.all("SELECT * FROM notes").then(rows => {
-            for(var row in rows) {
+            for(let row in rows) {
                 viewModel.noteResults.push({id: rows[row][0], note: rows[row][1]});
             }
         }, (error) => {
-            console.log(e);
+            
         });
     }
 
