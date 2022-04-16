@@ -1,5 +1,9 @@
 # Android Safe Box Pro
-All rights reserved. You can read the code in this repository, but you cannot use it. If you are interested in the app, get it on Google Play https://play.google.com/store/apps/details?id=com.techstuff.androidsafeboxpro.
+All rights reserved.
 
-# Demonstration
-[![](http://img.youtube.com/vi/Xgtpqz3De20/0.jpg)](http://www.youtube.com/watch?v=Xgtpqz3De20 "")
+# Screenshots
+<p align="center">
+<img src="screenshots/screenshot1.jpg" height="400">
+<img src="screenshots/screenshot2.jpg" height="400">
+<img src="screenshots/screenshot3.jpg" height="400">
+</p>
