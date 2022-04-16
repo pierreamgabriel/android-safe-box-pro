@@ -1,4 +1,4 @@
-var info = {
+let info = {
     src: "",
     link: ""
 };
@@ -6,7 +6,7 @@ var info = {
 exports.info = info;
 
 function createads() {
-	var locale = java.util.Locale.getDefault().getLanguage(); 
+	let locale = java.util.Locale.getDefault().getLanguage(); 
 	
 	if (locale === "pt_br" || locale === "pt") {
 	
