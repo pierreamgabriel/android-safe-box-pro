@@ -38,7 +38,7 @@
                 </ActionItem> 
             </ActionBar.actionItems>    
 </ActionBar>    
-<ScrollView  orientation="vertical">
+<ScrollView  orientation="vertical" backgroundColor="#ebeced">
 <GridLayout class="scroll" rows="auto, auto, auto" columns="*, *"> 
 <Image id="personalDoc" src="~/images/personaldocs.png" row="0" col="0" tap="goTo"></Image>    
 <Image id="note" src="~/images/note.png" row="0" col="1" tap="goTo"></Image>
