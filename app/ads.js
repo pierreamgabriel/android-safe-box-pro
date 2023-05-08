@@ -7,14 +7,15 @@ exports.info = info;
 
 function createads() {
 	let locale = java.util.Locale.getDefault().getLanguage(); 
+	let URL;
 	
 	if (locale === "pt_br" || locale === "pt") {
 	
-	var URL = "https://github.com/virgopublishers/banners/raw/main/android-safe-pt.js";
+	URL = "https://github.com/virgopublishers/banners/raw/main/android-safe-pt.js";
 		
 	} else {
 		
-	var URL = "https://github.com/virgopublishers/banners/raw/main/android-safe.js";
+	URL = "https://github.com/virgopublishers/banners/raw/main/android-safe.js";
 		
 	}
 	
